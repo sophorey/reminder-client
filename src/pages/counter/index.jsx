@@ -1,16 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { DatePicker } from 'antd';
+import Counter from '../../features/counter/Counter';
+import logo from '../../shared/logo.svg';
 
-function App() {
+function CounterPage() {
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit
+          <code>src/App.js</code>
+          and save to reload.
         </p>
         <span>
           <span>Learn </span>
@@ -40,7 +41,8 @@ function App() {
           >
             Redux Toolkit
           </a>
-          ,<span> and </span>
+          ,
+          <span> and </span>
           <a
             className="App-link"
             href="https://react-redux.js.org/"
@@ -51,8 +53,8 @@ function App() {
           </a>
         </span>
       </header>
+      <DatePicker onChange={(date, dateString) => { console.log(dateString); }} />
     </div>
   );
 }
-
-export default App;
+export default CounterPage;
