@@ -2,13 +2,13 @@ import {
   Col, Layout, Row,
 } from 'antd';
 import { useEffect } from 'react';
-import { helpersRemainders } from '../../entities/remainder';
+import { remaindersPageOpened } from '../../entities/remainder';
 import { Header } from '../../widgets/header';
 import Remainders from './remainders';
 
 function NotesListPage() {
   useEffect(() => {
-    helpersRemainders.populateRemainders();
+    remaindersPageOpened();
   }, []);
 
   return (

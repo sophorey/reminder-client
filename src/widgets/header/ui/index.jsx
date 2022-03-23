@@ -9,7 +9,12 @@ const Header = () => (
       defaultSelectedKeys={['2']}
       style={{ justifyContent: 'end' }}
     >
-      {[{ label: 'Remainders', path: '/' }, { label: 'Settings', path: '/settings' }, { label: 'Sign in', path: '/signin' }].map(({ label, path }) => (
+      {[
+        { label: 'Remainders', path: '/' },
+        { label: 'Settings', path: '/settings' },
+        { label: 'Sign in', path: '/signin' },
+        { label: 'Sign up', path: '/signup' },
+      ].map(({ label, path }) => (
         <Menu.Item key={path}>
           <Link to={path}>{label}</Link>
         </Menu.Item>

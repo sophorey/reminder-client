@@ -1,2 +1,3 @@
-export { useLabels } from './model';
-export { populateLabels } from './helpers';
+export {
+  labelsChanged, useLabels, loadLabelsFx, labelsPageOpened,
+} from './model';

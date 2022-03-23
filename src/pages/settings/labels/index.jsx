@@ -1,13 +1,17 @@
 import { DeleteOutlined, EditOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import {
-  Button, Modal, Input, Space, Form, Col, Row,
+  Button, Modal, Input, Form, Col, Row,
 } from 'antd';
-import { useState } from 'react';
-import { useLabels } from '../../../entities/labels';
+import { useEffect, useState } from 'react';
+import { labelsPageOpened, useLabels } from '../../../entities/labels';
 
 const Labels = () => {
   const [isLabelsEditModalVisible, setIsLabelsEditModalVisible] = useState(false);
   const labels = useLabels();
+
+  useEffect(() => {
+    labelsPageOpened();
+  }, []);
 
   const handleCancel = () => {
     setIsLabelsEditModalVisible(false);
