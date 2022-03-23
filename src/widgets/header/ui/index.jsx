@@ -1,4 +1,4 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Row } from 'antd';
 import { Link } from 'react-router-dom';
 
 const Header = () => (
@@ -20,6 +20,13 @@ const Header = () => (
         </Menu.Item>
       ))}
     </Menu>
+    <div style={{
+      zIndex: 100, position: 'fixed', display: 'flex', flexDirection: 'column',
+    }}
+    >
+      <span>thh146@gmail.com</span>
+      <span>password</span>
+    </div>
   </Layout.Header>
 );
 export default Header;
