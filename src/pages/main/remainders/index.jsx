@@ -5,12 +5,10 @@ import {
   Row, Col, Button,
 } from 'antd';
 import { useState } from 'react';
-import { useRemainders } from '../../../entities/remainder/model';
+import { remaindersChanged, useRemainders } from '../../../entities/remainder/model';
 import styles from './index.module.scss';
 import ReminderEdit from '../remainder-edit';
-import { $authHost } from '../../../shared/api';
-import { env } from '../../../shared/config';
-import { toggleCompleted } from '../../../shared/api/reminder-api';
+import { deleteReminder, updateReminder } from '../../../shared/api/reminder-api';
 
 const Remainders = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -30,13 +28,42 @@ const Remainders = () => {
     setIsModalVisible(false);
   };
 
-  const toggleCheck = ({ id, completed }) => {
-    toggleCompleted({ id, completed: !completed });
+  const handleToggleCheck = (reminder) => {
+    const { id, completed } = reminder;
+
+    // send new completed value
+    updateReminder({ id, completed: !completed })
+      .then((res) => {
+        // rerender
+        remaindersChanged(
+          remainders.map((r) => {
+            if (id === r.id) {
+              r.completed = !r.completed;
+            }
+            return r;
+          }),
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-  console.log(remainders);
+
+  const handleDelete = ({ id }) => {
+    deleteReminder({ id })
+      .then((res) => {
+        // rewrite reminders without deleted one
+        remaindersChanged([...remainders.filter((reminder) => id !== reminder.id)]);
+      })
+      .catch((error) => {
+
+      });
+  };
+
   return (
     <>
-      {!isModalVisible && remainders.map(({ id, text, completed }) => {
+      {!isModalVisible && remainders.map((reminder) => {
+        const { id, text, completed } = reminder;
         const textCn = [
           completed === true ? styles.strikethrough : null,
         ];
@@ -56,11 +83,11 @@ const Remainders = () => {
                   <Button onClick={() => { showModal(id); }} icon={<EditOutlined />} />
                 </Col>
                 <Col>
-                  <Button icon={<DeleteOutlined />} />
+                  <Button onClick={() => { handleDelete({ id }); }} icon={<DeleteOutlined />} />
                 </Col>
                 <Col>
                   <Button
-                    onClick={() => { toggleCheck({ id, completed }); }}
+                    onClick={() => { handleToggleCheck(reminder); }}
                     icon={<CheckOutlined />}
                   />
                 </Col>
