@@ -5,7 +5,7 @@ import {
 import { useState } from 'react';
 import { useRemainders } from '../../../entities/remainder';
 
-const RemainderEdit = ({
+const ReminderEdit = ({
   isModalVisible, handleCancel, activeRemainder, hideModal,
 }) => {
   const remainders = useRemainders();
@@ -90,4 +90,4 @@ const RemainderEdit = ({
     </Modal>
   );
 };
-export default RemainderEdit;
+export default ReminderEdit;

@@ -2,13 +2,15 @@ import {
   Button, Col, Form, Input, Layout, Row,
 } from 'antd';
 import { useState } from 'react';
-import { remaindersChanged } from '../../entities/remainder';
+import { useNavigate } from 'react-router-dom';
 import { signIn } from '../../shared/api/user-api';
+import { alert } from '../../shared/lib';
 import { Header } from '../../widgets/header';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -19,13 +21,25 @@ const SignIn = () => {
   };
 
   const handleSubmit = (e) => {
-    signIn(e);
+    signIn(e)
+      .then(() => {
+        alert.success('You are signed in');
+        navigate('/');
+      })
+      .catch((error) => {
+        alert.error(error.message);
+      });
   };
 
   return (
     <Layout style={{ height: '100vh' }}>
       <Header />
-      <Layout.Content style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <Layout.Content style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}
+      >
         <Row>
           <Col
             span={10}

@@ -80,8 +80,8 @@ const Labels = () => {
         transitionName=""
       >
         {labels.map((label) => (
-          <Row key={label}>
-            <Col style={{ textAlign: 'left' }} flex="auto">{label}</Col>
+          <Row key={label.id}>
+            <Col style={{ textAlign: 'left' }} flex="auto">{label.text}</Col>
             <Col flex="initial" style={{ marginRight: '30px' }}>
               <Row>
                 <Col>

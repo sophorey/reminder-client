@@ -14,6 +14,7 @@ const Header = () => (
         { label: 'Settings', path: '/settings' },
         { label: 'Sign in', path: '/signin' },
         { label: 'Sign up', path: '/signup' },
+        { label: 'Sign out', path: '/signout' },
       ].map(({ label, path }) => (
         <Menu.Item key={path}>
           <Link to={path}>{label}</Link>

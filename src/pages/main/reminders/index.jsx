@@ -7,10 +7,10 @@ import {
 import { useState } from 'react';
 import { remaindersChanged, useRemainders } from '../../../entities/remainder/model';
 import styles from './index.module.scss';
-import ReminderEdit from '../remainder-edit';
+import ReminderEdit from '../reminder-edit';
 import { deleteReminder, updateReminder } from '../../../shared/api/reminder-api';
 
-const Remainders = () => {
+const Reminders = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [activeRemainder, setActiveRemainder] = useState();
   const remainders = useRemainders();
@@ -103,4 +103,4 @@ const Remainders = () => {
     </>
   );
 };
-export default Remainders;
+export default Reminders;

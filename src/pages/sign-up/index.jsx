@@ -1,12 +1,23 @@
 import {
   Button, Col, Form, Input, Layout, Row,
 } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import { signUp } from '../../shared/api/user-api';
+import { alert } from '../../shared/lib';
 import { Header } from '../../widgets/header';
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (data) => {
-    signUp(data);
+    signUp(data)
+      .then((response) => {
+        alert.success('You are signed up');
+        navigate('/');
+      })
+      .catch((error) => {
+        alert.error(error.message);
+      });
   };
 
   return (
@@ -49,3 +60,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
+function useHistory() {
+  throw new Error('Function not implemented.');
+}
