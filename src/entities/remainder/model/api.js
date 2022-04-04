@@ -1,8 +1,16 @@
-import { $authHost } from '.';
+import { $authHost } from '../../../shared/api';
 
 export const updateReminder = async (attrs) => {
   const { id, completed } = attrs;
   const response = await $authHost.put(`/reminders/${id}`, { completed });
+  return response;
+};
+
+export const createReminder = async (attrs) => {
+  const { text, labelId, reminderTime } = attrs;
+  const response = await $authHost.post('/reminders', {
+    text, userId: 3, labelId, reminderTime,
+  });
   return response;
 };
 

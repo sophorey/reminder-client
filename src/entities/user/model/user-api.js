@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import { $host } from '.';
+import { $host } from '../../../shared/api';
 
 export const signUp = async ({ email, password }) => {
   try {

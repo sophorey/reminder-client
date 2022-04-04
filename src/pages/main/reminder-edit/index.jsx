@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRemainders } from '../../../entities/remainder';
 
 const ReminderEdit = ({
-  isModalVisible, handleCancel, activeRemainder, hideModal,
+  isModalVisible, activeRemainder, hideModal,
 }) => {
   const remainders = useRemainders();
   const [label, setLabel] = useState('');
@@ -43,7 +43,7 @@ const ReminderEdit = ({
   return (
     <Modal
       visible={isModalVisible}
-      onCancel={handleCancel}
+      onCancel={hideModal}
       footer={[<Button onClick={hideModal}>Save</Button>]}
       maskTransitionName=""
       transitionName=""

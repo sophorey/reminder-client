@@ -3,7 +3,7 @@ import {
 } from 'effector';
 import { useStore } from 'effector-react';
 import { $authHost } from '../../../shared/api';
-import { fetchLabels } from '../../../shared/api/label-api';
+import { fetchLabels } from './api';
 import { env } from '../../../shared/config';
 
 const labelsChanged = createEvent();

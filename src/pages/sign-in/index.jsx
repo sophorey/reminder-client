@@ -3,7 +3,7 @@ import {
 } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signIn } from '../../shared/api/user-api';
+import { signIn } from '../../entities/user/model/user-api';
 import { alert } from '../../shared/lib';
 import { Header } from '../../widgets/header';
 

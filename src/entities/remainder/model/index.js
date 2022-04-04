@@ -1,8 +1,8 @@
 import {
-  createEffect, createEvent, createStore, forward, sample,
+  createEffect, createEvent, createStore, forward,
 } from 'effector';
 import { useStore } from 'effector-react';
-import { fetchReminders } from '../../../shared/api/reminder-api';
+import { fetchReminders } from './api';
 
 const remaindersChanged = createEvent();
 const remaindersPageOpened = createEvent();

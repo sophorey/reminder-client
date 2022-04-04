@@ -2,7 +2,7 @@ import {
   Button, Col, Form, Input, Layout, Row,
 } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { signUp } from '../../shared/api/user-api';
+import { signUp } from '../../entities/user/model/user-api';
 import { alert } from '../../shared/lib';
 import { Header } from '../../widgets/header';
 

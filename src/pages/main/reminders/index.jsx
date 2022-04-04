@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { remaindersChanged, useRemainders } from '../../../entities/remainder/model';
 import styles from './index.module.scss';
 import ReminderEdit from '../reminder-edit';
-import { deleteReminder, updateReminder } from '../../../shared/api/reminder-api';
+import { deleteReminder, updateReminder } from '../../../entities/remainder/model/api';
 
 const Reminders = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,10 +18,6 @@ const Reminders = () => {
   const showModal = (id) => {
     setActiveRemainder(id);
     setIsModalVisible(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
   };
 
   const hideModal = () => {
@@ -97,7 +93,7 @@ const Reminders = () => {
         );
       })}
       <ReminderEdit {...{
-        handleCancel, hideModal, activeRemainder, isModalVisible,
+        hideModal, activeRemainder, isModalVisible,
       }}
       />
     </>
