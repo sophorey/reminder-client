@@ -7,5 +7,13 @@
     "checkJs": true,
     "allowUnreachableCode": true
   },
-  "baseUrl": "./"
+  "baseUrl": "./",
+  "types": [
+    "node"
+  ],
+  "paths": {
+    "@/*": [
+      "./src/*"
+    ]
+  }
 }
